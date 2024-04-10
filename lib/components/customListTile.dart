@@ -1,20 +1,8 @@
 import 'package:Siagra/models/topNews.model.dart';
-import 'package:Siagra/pages/articles_details_page.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 Widget customListTile(Articles article, BuildContext context) {
   return InkWell(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ArticlePage(
-            article: article,
-          ),
-        ),
-      );
-    },
     child: Container(
       margin: const EdgeInsets.all(12.0),
       padding: const EdgeInsets.all(8.0),
@@ -53,30 +41,6 @@ Widget customListTile(Articles article, BuildContext context) {
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          Container(
-            padding: const EdgeInsets.all(6.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  article.source?.name ?? 'Unknown',
-                  style: const TextStyle(
-                    color: Colors.blue,
-                  ),
-                ),
-                Text(
-                  article.publishedAt != null
-                      ? DateFormat('dd MMMM yyyy')
-                          .format(DateTime.parse(article.publishedAt!))
-                      : 'Unknown',
-                  style: const TextStyle(
-                    color: Colors.blue,
-                  ),
-                ),
-              ],
             ),
           ),
         ],

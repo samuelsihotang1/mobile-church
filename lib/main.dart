@@ -1,5 +1,4 @@
 import 'package:Siagra/components/customListTile.dart';
-import 'package:Siagra/components/everythingList.dart';
 import 'package:Siagra/models/topNews.model.dart';
 import 'package:Siagra/providers/news.provider.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +33,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<NewsProvider>(context, listen: false).getTopNews();
-    Provider.of<NewsProvider>(context, listen: false).getEverthingNews();
+    Provider.of<NewsProvider>(context, listen: false).setDataManually();
   }
 
   @override
@@ -45,13 +43,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         title: const Row(
           children: <Widget>[
-            CircleAvatar(
-              radius: 20.0,
-              backgroundColor: Colors.blue,
-            ),
-            SizedBox(width: 10.0),
             Text(
-              "Mandiri News",
+              "Siagra",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
@@ -62,45 +55,32 @@ class _HomePageState extends State<HomePage> {
         builder: (context, newsProvider, child) {
           if (newsProvider.isLoading) {
             return const Center(
-                child: CircularProgressIndicator(color: Colors.blue));
-          } else if (newsProvider.resNews != null &&
-              newsProvider.resEverythingNews != null) {
+              child: CircularProgressIndicator(color: Colors.blue),
+            );
+          } else if (newsProvider.resNews != null) {
             List<Articles>? articles = newsProvider.resNews!.articles!;
-            List<Articles>? everythingsArticles =
-                newsProvider.resEverythingNews!.articles!;
             return ListView.builder(
-              itemCount: articles.length + everythingsArticles.length + 2,
+              itemCount: articles.length + 2,
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      'Berita Terkini',
+                      'Berita Acara',
                       textAlign: TextAlign.start,
                       style: TextStyle(fontSize: 20),
                     ),
                   );
                 } else if (index <= articles.length) {
                   return customListTile(articles[index - 1], context);
-                } else if (index == articles.length + 1) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      'Semua Berita',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  );
-                } else {
-                  return everythingListTile(
-                      everythingsArticles[index - articles.length - 2],
-                      context);
                 }
+                return null;
               },
             );
           } else {
             return const Center(
-                child: CircularProgressIndicator(color: Colors.blue));
+              child: CircularProgressIndicator(color: Colors.blue),
+            );
           }
         },
       ),
