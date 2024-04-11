@@ -1,4 +1,4 @@
-import 'package:Siagra/models/topNews.model.dart';
+import 'package:Sigra/models/topNews.model.dart';
 import 'package:flutter/material.dart';
 
 class NewsProvider with ChangeNotifier {

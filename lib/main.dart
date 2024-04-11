@@ -1,6 +1,6 @@
-import 'package:Siagra/components/customListTile.dart';
-import 'package:Siagra/models/topNews.model.dart';
-import 'package:Siagra/providers/news.provider.dart';
+import 'package:Sigra/components/customListTile.dart';
+import 'package:Sigra/models/topNews.model.dart';
+import 'package:Sigra/providers/news.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         title: const Row(
           children: <Widget>[
             Text(
-              "Siagra",
+              "Sigra",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),
