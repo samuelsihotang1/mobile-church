@@ -1,88 +1,75 @@
-import 'package:Sigra/components/customListTile.dart';
-import 'package:Sigra/models/topNews.model.dart';
-import 'package:Sigra/providers/news.provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:sigra/menu/church_page.dart';
+import 'package:sigra/menu/event_page.dart';
+import 'package:sigra/menu/home_page.dart';
+import 'package:sigra/menu/laporan_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<NewsProvider>(
-      create: (context) => NewsProvider(),
-      child: const MaterialApp(
-        home: HomePage(),
-      ),
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: const Navigation(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Navigation extends StatefulWidget {
+  const Navigation({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<Navigation> createState() => _NavigationState();
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<NewsProvider>(context, listen: false).setDataManually();
-  }
+class _NavigationState extends State<Navigation> {
+  int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Row(
-          children: <Widget>[
-            Text(
-              "Sigra",
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
-      body: Consumer<NewsProvider>(
-        builder: (context, newsProvider, child) {
-          if (newsProvider.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(color: Colors.blue),
-            );
-          } else if (newsProvider.resNews != null) {
-            List<Articles>? articles = newsProvider.resNews!.articles!;
-            return ListView.builder(
-              itemCount: articles.length + 2,
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      'Berita Acara',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  );
-                } else if (index <= articles.length) {
-                  return customListTile(articles[index - 1], context);
-                }
-                return null;
-              },
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(color: Colors.blue),
-            );
-          }
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
         },
+        indicatorColor: Colors.amber,
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.church),
+            icon: Icon(Icons.church_outlined),
+            label: 'Gereja',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.event),
+            icon: Icon(Icons.event_outlined),
+            label: 'Acara/Event',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.document_scanner),
+            icon: Icon(Icons.document_scanner_outlined),
+            label: 'Laporan',
+          ),
+        ],
+      ),
+      body: IndexedStack(
+        index: currentPageIndex,
+        children: const <Widget>[
+          HomePage(),
+          ChurchsPage(),
+          EventsPage(),
+          ReportsPage(),
+        ],
       ),
     );
   }
