@@ -117,9 +117,9 @@ class AcaraCarousel extends StatelessWidget {
       ],
       options: CarouselOptions(
         height: 400,
-        enableInfiniteScroll: true,
-        autoPlay: true,
-        autoPlayInterval: const Duration(milliseconds: 5000),
+        enableInfiniteScroll: false,
+        autoPlay: false,
+        // autoPlayInterval: const Duration(milliseconds: 5000),
         viewportFraction: 0.85,
       ),
     );
