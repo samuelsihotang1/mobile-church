@@ -1,5 +1,8 @@
+// menu\home_page.dart
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:sigra/components/card.components.dart';
+import 'package:sigra/models/article.model.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +19,7 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(top: 4.0, bottom: 8.0),
               child: Text(
-                'SIGRA',
+                '- SIGRA -',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
@@ -34,7 +37,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -47,7 +50,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -60,7 +63,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -73,7 +76,7 @@ class HomePage extends StatelessWidget {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -90,27 +93,34 @@ class AcaraCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      items: const [
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.notifications_sharp),
-            title: Text('Text 1'),
-            subtitle: Text('This is a text'),
+      items: [
+        ArticleCard(
+          article: Articles(
+            title: 'Article 1',
+            urlToImage: '/lib/image.jpg',
+            source: Source(name: 'Source 1'),
+            publishedAt: '2024-04-13T08:00:00Z',
+            description:
+                'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           ),
         ),
-        Card(
-          child: ListTile(
-            leading: Icon(Icons.notifications_sharp),
-            title: Text('Text 2'),
-            subtitle: Text('This is a text'),
+        ArticleCard(
+          article: Articles(
+            title: 'Article 2',
+            urlToImage: '/lib/image.jpg',
+            source: Source(name: 'Source 2'),
+            publishedAt: '2024-04-12T08:00:00Z',
+            description:
+                'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
           ),
         ),
       ],
       options: CarouselOptions(
-        height: 150,
-        enlargeCenterPage: true,
+        height: 400,
         enableInfiniteScroll: true,
         autoPlay: true,
+        autoPlayInterval: const Duration(milliseconds: 10000),
+        viewportFraction: 0.85,
       ),
     );
   }

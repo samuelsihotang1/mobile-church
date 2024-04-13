@@ -1,3 +1,4 @@
+//main.dart
 import 'package:flutter/material.dart';
 import 'package:sigra/menu/church_page.dart';
 import 'package:sigra/menu/event_page.dart';
