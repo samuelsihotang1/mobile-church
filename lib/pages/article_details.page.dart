@@ -19,42 +19,30 @@ class ArticlePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 200.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(article.urlToImage ?? ''),
-                    fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-            ),
-            const SizedBox(
-              height: 8.0,
-            ),
-            Container(
-              padding: const EdgeInsets.all(6.0),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: Text(
-                article.source?.name ?? 'Unknown',
-                style: const TextStyle(
-                  color: Colors.white,
+            if (article.urlToImage != null)
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 16.0,
+                ),
+                child: Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(article.urlToImage ?? ''),
+                        fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 8.0,
-            ),
-            Text(
-              article.description ?? '',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
-            )
+            if (article.description != null)
+              Text(
+                article.description ?? '',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
+              )
           ],
         ),
       ),

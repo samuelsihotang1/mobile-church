@@ -42,72 +42,78 @@ class ArticleCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 200.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(article.urlToImage ??
-                      'https://via.placeholder.com/750x500.jpeg?text=Image+Error'),
-                  fit: BoxFit.cover,
+            if (article.urlToImage != null)
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 12.0,
                 ),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(
-                top: 12.0,
-                left: 5.0,
-                right: 5.0,
-                bottom: 0,
-              ),
-              child: Text(
-                article.title ?? 'No Title',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(
-                top: 0,
-                left: 5.0,
-                right: 5.0,
-                bottom: 10.0,
-              ),
-              child: Row(
-                children: [
-                  Text(
-                    article.publishedAt != null
-                        ? DateFormat('dd MMMM yyyy')
-                            .format(DateTime.parse(article.publishedAt!))
-                        : 'Unknown',
-                    style: const TextStyle(
-                      color: Color.fromARGB(150, 0, 0, 0),
+                child: Container(
+                  height: 200.0,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(article.urlToImage ?? ''),
+                      fit: BoxFit.cover,
                     ),
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(
-                top: 0,
-                left: 5.0,
-                right: 5.0,
-                bottom: 5.0,
-              ),
-              child: Text(
-                article.description ?? 'No Description',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
-                  color: Color.fromARGB(180, 0, 0, 0),
                 ),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
               ),
-            ),
+            if (article.title != null)
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 5.0,
+                  right: 5.0,
+                ),
+                child: Text(
+                  article.title ?? '',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            if (article.publishedAt != null)
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 0,
+                  left: 5.0,
+                  right: 5.0,
+                  bottom: 10.0,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      article.publishedAt != null
+                          ? DateFormat('dd MMMM yyyy')
+                              .format(DateTime.parse(article.publishedAt!))
+                          : '',
+                      style: const TextStyle(
+                        color: Color.fromARGB(150, 0, 0, 0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            if (article.description != null)
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 0,
+                  left: 5.0,
+                  right: 5.0,
+                  bottom: 5.0,
+                ),
+                child: Text(
+                  article.description ?? 'No Description',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    color: Color.fromARGB(180, 0, 0, 0),
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
           ],
         ),
       ),

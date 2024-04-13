@@ -67,7 +67,7 @@ class _NavigationState extends State<Navigation> {
         index: currentPageIndex,
         children: const <Widget>[
           HomePage(),
-          ChurchsPage(),
+          ChurchPage(),
           EventsPage(),
           ReportsPage(),
         ],

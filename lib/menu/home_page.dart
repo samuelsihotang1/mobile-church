@@ -29,11 +29,11 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          //// ACARA
+          //// Acara
           Padding(
             padding: EdgeInsets.only(top: 10.0, bottom: 4.0),
             child: Text(
-              'ACARA',
+              'Acara',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
@@ -42,11 +42,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
           AcaraCarousel(),
-          //// AYAT HARIAN
+          //// Ayat Harian
           Padding(
             padding: EdgeInsets.only(top: 20.0, bottom: 4.0),
             child: Text(
-              'AYAT HARIAN',
+              'Ayat Harian',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
@@ -55,11 +55,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
           AcaraCarousel(),
-          //// WARTA JEMAAT
+          //// Warta Jemaat
           Padding(
             padding: EdgeInsets.only(top: 20.0, bottom: 4.0),
             child: Text(
-              'WARTA JEMAAT',
+              'Warta Jemaat',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
@@ -68,11 +68,11 @@ class HomePage extends StatelessWidget {
             ),
           ),
           AcaraCarousel(),
-          //// BERITA
+          //// Berita
           Padding(
             padding: EdgeInsets.only(top: 20.0, bottom: 4.0),
             child: Text(
-              'BERITA',
+              'Berita',
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 24,
@@ -107,7 +107,7 @@ class AcaraCarousel extends StatelessWidget {
         ArticleCard(
           article: Articles(
             title: 'Article 2',
-            urlToImage: '/lib/image.jpg',
+            urlToImage: '/lib/image2.jpg',
             source: Source(name: 'Source 2'),
             publishedAt: '2024-04-12T08:00:00Z',
             description:
@@ -119,7 +119,7 @@ class AcaraCarousel extends StatelessWidget {
         height: 400,
         enableInfiniteScroll: true,
         autoPlay: true,
-        autoPlayInterval: const Duration(milliseconds: 10000),
+        autoPlayInterval: const Duration(milliseconds: 5000),
         viewportFraction: 0.85,
       ),
     );
