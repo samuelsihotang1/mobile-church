@@ -1,5 +1,4 @@
 // menu\report_page.dart
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:sigra/components/card.components.dart';
 import 'package:sigra/models/article.model.dart';
@@ -30,18 +29,6 @@ class ReportsPage extends StatelessWidget {
             ),
           ),
           //// Arus Kas Bulanan
-          Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 4.0),
-            child: Text(
-              'Arus Kas Bulanan',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          KasCarousel(),
           //// Persembahan
           Padding(
             padding: EdgeInsets.only(top: 20.0, bottom: 4.0),
@@ -61,45 +48,6 @@ class ReportsPage extends StatelessWidget {
   }
 }
 
-class KasCarousel extends StatelessWidget {
-  const KasCarousel({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: [
-        ArticleCard(
-          article: Articles(
-            title: 'Article 1',
-            urlToImage: '/lib/image.jpg',
-            source: Source(name: 'Source 1'),
-            publishedAt: '2024-04-13T08:00:00Z',
-            description:
-                'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          ),
-        ),
-        ArticleCard(
-          article: Articles(
-            title: 'Article 2',
-            urlToImage: '/lib/image2.jpg',
-            source: Source(name: 'Source 2'),
-            publishedAt: '2024-04-12T08:00:00Z',
-            description:
-                'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          ),
-        ),
-      ],
-      options: CarouselOptions(
-        height: 400,
-        enableInfiniteScroll: true,
-        autoPlay: true,
-        autoPlayInterval: const Duration(milliseconds: 5000),
-        viewportFraction: 0.85,
-      ),
-    );
-  }
-}
-
 class PersembahanList extends StatelessWidget {
   const PersembahanList({super.key});
 
@@ -111,24 +59,92 @@ class PersembahanList extends StatelessWidget {
         children: [
           ArticleCard(
             article: Articles(
-              title: 'Article 1',
-              description:
-                  'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            ),
+                title: 'Persembahan Minggu 26 Mei 2024', description: '''
+QR BCA: Rp. 50.000,-
+QR PERMATA: Rp. 50.000,-
+QR MEGA: Rp. 50.000,-
+EY: Rp. 70.200,-
+Ibu Soeradji: Rp. 100.000,-
+E: Rp. 100.000,-
+QR BCA: Rp. 150.000,-
+ING: Rp. 150.000,-
+NN: Rp. 150.000,-
+NN: Rp. 250.000,-
+Andreas: Rp. 500.000,-
+Total QR 9 Mei: Rp. 650.000,-
+QR BCA: Rp. 1.000.000,-
+NN: Rp. 2.100.000,-
+JE: Rp. 3.500.000,-
+Kotak Persembahan 9 Mei: Rp. 50.000,-
+Kotak Persembahan 12 Mei: Rp. 110.000,-
+
+Jumlah: Rp. 9.030.200,-
+Perpuluhan: 
+NN: Rp. 360.000,-
+ING: Rp. 500.000,-
+
+Jumlah: Rp. 860.000,-
+Jumlah Persembahan dan Perpuluhan: Rp. 9.890.200,-
+Persembahan Diakonia:
+LH: Rp. 30.200,-
+NN: Rp. 50.000,-
+NN: Rp. 100.000,-
+Jumlah: Rp. 180.200,-
+
+Persembahan Youth:
+QR BCA: Rp. 15.000,-
+AUPSP: Rp. 30.000,-
+ISC: Rp. 50.000,-
+NN: Rp. 500.000,-
+
+Jumlah: Rp. 595.000,-
+              
+              '''),
           ),
           ArticleCard(
             article: Articles(
-              title: 'Article 2',
-              description:
-                  'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            ),
-          ),
-          ArticleCard(
-            article: Articles(
-              title: 'Article 3',
-              description:
-                  'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            ),
+                title: 'Persembahan Minggu 19 Mei 2024', description: '''
+QR BCA: Rp. 50.000,-
+QR PERMATA: Rp. 50.000,-
+QR MEGA: Rp. 50.000,-
+EY: Rp. 70.200,-
+Ibu Soeradji: Rp. 100.000,-
+E: Rp. 100.000,-
+QR BCA: Rp. 150.000,-
+ING: Rp. 150.000,-
+NN: Rp. 150.000,-
+NN: Rp. 250.000,-
+Andreas: Rp. 500.000,-
+Total QR 9 Mei: Rp. 650.000,-
+QR BCA: Rp. 1.000.000,-
+NN: Rp. 2.100.000,-
+JE: Rp. 3.500.000,-
+Kotak Persembahan 9 Mei: Rp. 50.000,-
+Kotak Persembahan 12 Mei: Rp. 110.000,-
+
+Jumlah: Rp. 9.030.200,-
+Perpuluhan: 
+NN: Rp. 360.000,-
+ING: Rp. 500.000,-
+
+Jumlah: Rp. 860.000,-
+Jumlah Persembahan dan Perpuluhan: Rp. 9.890.200,-
+Persembahan Diakonia:
+LH: Rp. 30.200,-
+NN: Rp. 50.000,-
+NN: Rp. 100.000,-
+Jumlah: Rp. 180.200,-
+
+Persembahan Youth:
+QR BCA: Rp. 15.000,-
+AUPSP: Rp. 30.000,-
+ISC: Rp. 50.000,-
+NN: Rp. 500.000,-
+
+Jumlah: Rp. 595.000,-
+
+              
+              '''),
           ),
         ],
       ),
